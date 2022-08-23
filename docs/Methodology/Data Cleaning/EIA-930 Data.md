@@ -1,42 +1,6 @@
 ---
-stoplight-id: oaoaetsid78al
+stoplight-id: cleaning_eia930
 ---
-
-# Data Cleaning
-
-### Use of PUDL
-
-
-
-* Describe which datasets we load from pudl and how pudl changes these data
-* Data used
-    * CEMS: [https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/epacems.html#pudl-data-transformations](https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/epacems.html#pudl-data-transformations) 
-    * EIA-923: [https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/eia923.html#notable-irregularities](https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/eia923.html#notable-irregularities) 
-    * EIA-860 / Boiler-Generator Association: [https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/eia860.html#notable-irregularities](https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/eia860.html#notable-irregularities) 
-* Use of subplant and allocation modules
-
-
-### EIA-923 data
-
-Steps
-
-
-
-1. Generation and fuel allocation
-2. Update energy source codes
-    1. Validation: Ensure no missing ESC
-3. Determine primary fuel
-4. Calculate emissions from fuel consumption
-5. Calculate biomass-adjusted emissions
-6. Calculate CHP-adjusted emissions
-7. Calculate CO2e
-8. Aggregate the data by generator
-9. Remove certain plants
-10. Add subplant ID and prime mover code
-
-
-### CEMS data
-
 
 ### EIA-930 data
 
