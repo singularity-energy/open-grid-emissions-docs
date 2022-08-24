@@ -4,6 +4,8 @@ stoplight-id: 6d62o3sj0s0o0
 
 # Methodology Overview
 
+> This page is a work in progress.
+
 1. **Download data**: Download data, including CEMS (via PUDL), EIA Forms 860, 861, and 923 (raw data and via PUDL), EPA-EIA Power Sector Data Crosswalk, EIA-930 data
 2. **Identify subplants**: Identify distinct “subplants” which represent interconnected groupings of units, generators, and boilers within a plant using graph analysis, based on relationships reported in the power sector data crosswalk and the EIA-860 boiler-generator association table. 
 3. **Clean EIA-923 data**: Clean and allocate monthly generation and fuel data from EIA-923
