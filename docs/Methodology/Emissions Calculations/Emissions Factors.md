@@ -2,11 +2,6 @@
 stoplight-id: emission_factors
 ---
 
-## Consumption-based Emissions
-
-We use a multi-region input-output model to calculate consumption-based emissions for every balancing authority (BA). At each hour, the MIRO model solves a linear system setting generated emissions equal to the sum of consumed emissions and interchanged emissions across all regions. Generated emissions are given by our Open Grid Emissions dataset, and electricity interchange is given by EIA-930 data. From Chalendar (2019), the linear system is: 
-
-
 
 ## Consumption-based Emissions
 
