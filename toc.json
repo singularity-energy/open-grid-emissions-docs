@@ -67,6 +67,11 @@
       "items": [
         {
           "type": "item",
+          "title": "Emission Factors",
+          "uri": "/docs/Methodology/Emissions Calculations/Emission Factors.md"
+        },
+        {
+          "type": "item",
           "title": "Assigning Energy Source Codes",
           "uri": "/docs/Methodology/Emissions Calculations/Assigning Energy Source Codes.md"
         },
