@@ -67,8 +67,8 @@
       "items": [
         {
           "type": "item",
-          "title": "Emission Factors",
-          "uri": "/docs/Methodology/Emissions Calculations/Emission Factors.md"
+          "title": "Overview",
+          "uri": "/docs/Methodology/Emissions Calculations/Overview.md"
         },
         {
           "type": "item",
@@ -103,7 +103,7 @@
         {
           "type": "item",
           "title": "Consumption-based Emissions",
-          "uri": "/docs/Methodology/Emissions Calculations/Emissions Factors.md"
+          "uri": "/docs/Methodology/Emissions Calculations/Consumption-based Emissions.md"
         }
       ]
     },
