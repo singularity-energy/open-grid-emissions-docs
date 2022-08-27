@@ -33,7 +33,7 @@ Each of these data categories includes data at different temporal resolutions (h
 
 ## Uses and Users
 
-![Example Data Use Cases](Use%20Case%20Table.png)
+![Example Data Use Cases](use_cases.png)
 
 ## Data Dictionary
 
