@@ -28,3 +28,6 @@ The Intergovernmental Panel on Climate Change (IPCC) regularly updates these val
 In addition, the IPCC publishes GWPs on both a 20-year time horizon and a 100-year time horizon. The 100-year values are used as the default for all published CO2e values in the OGEI. 
 
 Finally, in AR5, the IPCC published GWPs that both included and excluded the impact of what they called the "climate-carbon feedback." As a default, all CO2e values published as part of the OGEI that use AR5 values use the GWPs with climate-carbon feedback. Starting with AR6, GWPs by default include climate carbon feedback.
+
+## Future Work, Known Issues, and Open Questions
+- Consider using fuel-weighted emissions factors for filling missing emissions data (https://github.com/singularity-energy/open-grid-emissions/issues/163))

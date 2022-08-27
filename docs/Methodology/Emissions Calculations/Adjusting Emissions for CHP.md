@@ -39,3 +39,8 @@ Since electric allocation factor also relies on `net_generation_mwh`, we must fi
 For each CEMS subplant, a unique electric allocation factor is calculated for for each hour.
 
 Once the electric allocation factor is available, a new value for `fuel_consumed_for_electricity_mmbtu` is calculated by multiplying the factor by the original `fuel_consumed_mmbtu` value. 
+
+## Future Work, Known Issues, and Open Questions
+- Update assumed efficiency factors for calculating the electric allocation factor ([details](https://github.com/singularity-energy/open-grid-emissions/issues/23))
+- Update electric allocation factor calculation to consider topping vs bottoming cycles ([details](https://github.com/singularity-energy/open-grid-emissions/issues/23))
+- Confirm how CEMS data reports fuel consumed for electricity ([details](https://github.com/singularity-energy/open-grid-emissions/issues/23)) and how to interpret reported steam load ([details](https://github.com/singularity-energy/open-grid-emissions/issues/103))

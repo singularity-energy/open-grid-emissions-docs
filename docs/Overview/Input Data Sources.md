@@ -37,9 +37,14 @@ stoplight-id: input_data
 **EIA Form 930 / Hourly Electric Grid Monitor**
 * **What is it**: Reported hourly net generation by fuel category, demand, and interchange for each Balancing Area in the U.S. 
 * **How we use it**: To assign an hourly profile to the monthly generation and fuel data reported in EIA-923 and to calculate hourly consumed emission factors
-* **More information**: [https://www.eia.gov/electricity/gridmonitor/about](https://www.eia.gov/electricity/gridmonitor/about) 
+* **More information**: [https://www.eia.gov/electricity/gridmonitor/about](https://www.eia.gov/electricity/gridmonitor/about) and [https://www.eia.gov/survey/#eia-930](https://www.eia.gov/survey/#eia-930)
 
 **EPA eGRID database**
 * **What is it**: Reports annual-level generation and emissions statistics at the plant and BA level 
 * **How we use it**: to validate our outputs, and as a source for certain static tables (emission factors, conversion factors, etc)
 * **More information**: [https://www.epa.gov/egrid](https://www.epa.gov/egrid)
+
+**gridemissions repository**
+* **What is it**: Tools for tracking EIA-930 power sector data
+* **How we use it**: To clean raw EIA-930 data and to calculate consumption-based emissions totals
+* **More information**: [https://gridemissions.jdechalendar.su.domains/#/code](https://gridemissions.jdechalendar.su.domains/#/code)

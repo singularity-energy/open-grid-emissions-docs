@@ -20,3 +20,9 @@ All other emissions (CH4, N2O, NOx, and SO2) are only adjusted for landfill gas 
 Adjusting NOx emissions from landfill gas is done by subtracting baseline flared NOx emissions (calculated using an emission factor for flaring of landfill gas of 0.078 lb NOx/mmbtu, derived from table 2.4-4 of the EPA's AP-42 document) from the combustion NOx emissions (see [this issue](https://github.com/singularity-energy/open-grid-emissions/issues/73) for further discussion of this process). 
 
 This methodology for adjusting landfill gas emissions is potentially problematic for multiple reasons. As opposed to other biomass fuels, where the arguement for these adjustments is based in attributional life-cycle accounting and involves considering upstream carbon sequestration by the biomass, the argument for adjusting landfill gas emissions is based in a consequential emissions framework that assumes that no additional emissions are occuring compared to a counterfactual baseline scenario. Selectively applying a consequential emissions approach to landfill gas emissions is not necessarily appropriate for inventorying attributional emissions from the power sector.
+
+## Future Work, Known Issues, and Open Questions
+- Determine whether we should continue publishing biomass-adjusted emissions ([details](https://github.com/singularity-energy/open-grid-emissions/issues/130))
+- Update methodology for adjusting landfill gas emissions ([details](https://github.com/singularity-energy/open-grid-emissions/issues/73))
+- Look into updated emission factors for "other biomass" fuels ([details](https://github.com/singularity-energy/open-grid-emissions/issues/69))
+- Consider the biogenic and nonbiogenic components of MSW fuel when adjusting emissions from CEMS ([details](https://github.com/singularity-energy/open-grid-emissions/issues/51))

@@ -20,3 +20,9 @@ All of the manual fuel type updates that we make can be found in [this table](ht
 ## Energy Source Code for Municipal Solid Waste
 
 Historically, any generators that burned municipal solid waste (MSW) reported this fuel consumption under a single fuel code. In recent years, however, EIA-923 began reporting these data under two separate codes for the biogenic portion (MSB) and non-biogenic portion (MSN). This is important because each portion has different emission rates. When calculating emissions from fuel consumption for EIA-923 data, these two separate fuel codes are used. However, when imputing missing emissions data in CEMS, the fuel type assigned to each unit is sourced from the Power Sector Data Crosswalk, which still only uses the MSW fuel code. This will be fixed in future versions of the database, and progress on this issue can be tracked [here](https://github.com/singularity-energy/open-grid-emissions/issues/51).
+
+## Future Work, Known Issues, and Open Questions
+- implement programmatic approach to updating OTH fuel codes ([details](https://github.com/singularity-energy/open-grid-emissions/issues/48))
+- Use more specific energy source codes when available ([details](https://github.com/singularity-energy/open-grid-emissions/issues/195))
+- Consider using startup-specific fuel codes to fill missing CEMS data during unit startup ([details](https://github.com/singularity-energy/open-grid-emissions/issues/155))
+- Do we need to add digester gas (DG) fuel code and emissions factor to the data ([details](https://github.com/singularity-energy/open-grid-emissions/issues/72))

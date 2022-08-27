@@ -21,5 +21,9 @@ $$ emission\_mass\_lb \over net\_generation\_mwh $$
 
 Consumed emission factors describe the emissions intensity of electricity consumed in a region, which is a mix of the electricity generated in a region and the electricity imported into the region. More details about this methodology can be found [here](../Emissions%20Calculations/Consumption-based%20Emissions.md). 
 
-### A note on emissions factors during startup / small BAs
-> TODO: Gailin to add info about this
+### A note on emissions factors in small balancing authorities during power plant startup
+In small or generation-only balancing authorities (with a small number of generators), the operational characteristics of a single plant can have a large impact on the regional emission factor. This is especially relevant during power plant startup, during which time a plant starts consuming fuel but may not be generating a large amount of electricity, thus leading to an emission factor that is orders of magnitude higher than the emission factor during normal operation. This is typically only an issue when observing plant-level hourly data, but this can also affect the regional emission factor for some small BAs.
+
+## Future Work, Known Issues, and Open Questions
+- How should we account for energy storage in emission factors ([details](https://github.com/singularity-energy/open-grid-emissions/issues/60))
+- How should we account for plant startup in our emissions calcuations ([details](https://github.com/singularity-energy/open-grid-emissions/issues/155)
