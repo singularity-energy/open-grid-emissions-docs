@@ -11,9 +11,10 @@ stoplight-id: consumed_emissions
 
 We use a multi-region input-output (MRIO) model to calculate consumption-based emissions for every balancing authority (BA). At each hour, the MIRO model solves a linear system setting generated emissions equal to the sum of consumed emissions and interchanged emissions across all regions. Generated emissions are given by our Open Grid Emissions dataset, and electricity interchange is given by EIA-930 data. From [Chalendar et al. (2019)](https://www.pnas.org/doi/full/10.1073/pnas.1912950116), the linear system is: 
 
-$$ x_i(p_i+U_i) - \sum_j{x_ju_{ij}}=f_i $$
+_x<sub>i</sub>_(_p<sub>i</sub>_+_U<sub>i</sub>_) - SUM<sub>j</sub>(_x<sub>j</sub>_u<sub>ij</sub>_) = _f<sub>i</sub>_  
 
-Where _i_ is a region, _x<sub>i</sub> _is the consumed emission intensity in region _i_, _p<sub>i</sub>_ is the electricity produced in region _i_, _U<sub>i</sub>_ is the total import into region _i_, _u<sub>ij</sub>_ is the import from region _i_ to region _j_, and _f<sub>i</sub>_ is the total pollutant produced in region _i_. 
+
+Where _i_ is a region, _x<sub>i</sub>_ is the consumed emission intensity in region _i_, _p<sub>i</sub>_ is the electricity produced in region _i_, _U<sub>i</sub>_ is the total import into region _i_, _u<sub>ij</sub>_ is the import from region _i_ to region _j_, and _f<sub>i</sub>_ is the total pollutant produced in region _i_. 
 
 In practice, consumed emissions are generally dirtier than generated emissions in regions which generate clean energy but also import energy from their neighbors (for example, the California ISO, CISO). This is reversed in regions which generate dirty or average energy but import clean energy, for example, the New England ISO (ISNE), which imports hydropower from Quebec. 
 
