@@ -2,11 +2,17 @@
 stoplight-id: subplant_aggregation
 ---
 
+## Background on power plant configuration and data crosswalking
+
+> NOTE: There are many different terms used to describe the different parts of a power plant: boiler, generator, turbine (prime mover), and unit. We recommend reading [this resource](https://github.com/USEPA/camd-eia-crosswalk#what-is-the-lowest-level-of-spatial-aggregation-for-each-data-set) from the U.S. EPA about how these terms are defined and how they are related.  
+
 CEMS reports data at the unit level (which generally represents a combination of boilers and smokestacks), while EIA-923 data is reported at the generator level (which represents the source of electrical generation itself). Sometimes units and generators are related in simple one-to-one relationships (i.e. a single boiler powers a single generator, and emits pollution via a single stack), but in other cases these units and generators can be configured in complex arrangements (such as one-to-many, many-to-one, or many-to-many). These relationships are described in the [EPA’s Power Sector Data Crosswalk](https://www.epa.gov/airmarkets/power-sector-data-crosswalk) and in the EIA-860 Boiler-Generator Association table. Whenever comparing data between CEMS and EIA, such as when identifying which data is missing from CEMS, or when calculating gross-to-net generation conversions, it is important to ensure that we are comparing the same data.
+
+## Subplant aggregation methodology
 
 One way to compare data from the two sources would be to aggregate the data to the plant level, which includes all units and generators. However, at the plant level we lose important details about the operation patterns and emissions from each generator at a plant. 
 
-Thus, using a methodology developed as part of the PUDL project, we aggregate the data into “subplants,” which represent distinct, independent groupings of units and generators at a plant. In some cases, a subplant might consist of a single unit and single generator, but in other cases, it might consist of multiple generators and units that are interconnected (such as for combined-cycle generators). 
+Thus, using a methodology developed as part of the PUDL project, we aggregate the data into “subplants,” which represent distinct, independent groupings of units and generators at a plant. In some cases, a subplant might consist of a single unit and single generator, but in other cases, it might consist of multiple generators and units that are interconnected (such as for combined-cycle generators). For example, in figure 1 of the [above referenced]((https://github.com/USEPA/camd-eia-crosswalk#what-is-the-lowest-level-of-spatial-aggregation-for-each-data-set)) EPA explainer, each of the four examples (A, B, C, D) would be considered its own subplant.
 
 The PUDL module for identifying subplants uses graph analysis to identify these unique groupings. As explained in [their documentation](https://catalystcoop-pudl.readthedocs.io/en/latest/autoapi/pudl/analysis/epa_crosswalk/index.html):
 

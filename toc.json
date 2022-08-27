@@ -19,13 +19,7 @@
       "type": "item",
       "title": "Contributing To The Code Repository",
       "uri": "/docs/Overview/Contributing to the Code Repository.md"
-    },
-    {
-      "type": "item",
-      "title": "Terminology",
-      "uri": "/docs/Overview/Terminology.md"
-    },
-    
+    },    
     {
       "type": "divider",
       "title": "Methodology"

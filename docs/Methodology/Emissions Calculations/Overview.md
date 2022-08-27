@@ -10,8 +10,16 @@ The published data reflects a mix of measured and estimated emissions data. The 
 
 > TODO: insert table with overview of emissions data sources
 
-## Production-based Emissions
+## Emissions Factors
+In addition to providing total emissions mass, OGE also provides emissions factors that describe the emissions intensity of the electricity being generated or consumed. These emissions factors are calcuated by dividing total emissions mass (lb) by total electric generation (MWh).
 
-Production-based emission factors describe the emissions intensity of generated electricity injected into the grid, and are calculated as 
+There are two different types of emissions factors: generated and consumed.
+
+Generated emission factors describe the emissions intensity of generated electricity injected into the grid, and are calculated as 
 
 $$ emission\_mass\_lb \over net\_generation\_mwh $$
+
+Consumed emission factors describe the emissions intensity of electricity consumed in a region, which is a mix of the electricity generated in a region and the electricity imported into the region. More details about this methodology can be found [here](../Emissions%20Calculations/Consumption-based%20Emissions.md). 
+
+### A note on emissions factors during startup / small BAs
+> TODO: Gailin to add info about this
