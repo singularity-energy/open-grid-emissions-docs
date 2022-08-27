@@ -1,13 +1,8 @@
 ---
-stoplight-id: egrid_validation
+stoplight-id: egrid_comparison
 ---
+Although the OGEI methodology is based on the EPA's eGRID methodology, there are some important differences. Thus, if comparing OGEI data to eGRID data, it is important to keep the following differences in mind:
 
-Primary differences with eGRID methodology:
-
-
-
-* We use an updated NOx emission factor for flared landfill gas when calculating adjusted emissions from LFG generators.
-* We calculate the electric allocation factor for CHP plants for each month, rather than using an annual average electric allocation factor (which is what eGRID uses.
 
 <table>
   <tr>
@@ -38,7 +33,7 @@ Method/approach
    </td>
    <td>Based on reported fuel and generation data if available, then based on nameplate capacity
    </td>
-   <td>
+   <td>May result in different calculated values
    </td>
   </tr>
   <tr>
@@ -48,7 +43,7 @@ Method/approach
    </td>
    <td>Assigns a generator-specific geotype (there are sometimes multiple types at a single plant), and uses updated geotype classifications based on most recent EIA data
    </td>
-   <td>Geothermal CO2 emissions about 3% lower than values calculated in eGRID
+   <td>Geothermal CO2 emissions about 3% lower than values calculated in eGRID2020
    </td>
   </tr>
   <tr>
@@ -78,7 +73,7 @@ Method/approach
    </td>
    <td>Month-specific electric allocation factors are calculated
    </td>
-   <td>Not calculated
+   <td>May result in different calculated values
    </td>
   </tr>
   <tr>
@@ -96,21 +91,12 @@ Uses MSW rather than MSN or MSB.
   <tr>
    <td>OTH fuel types
    </td>
-   <td>
+   <td>Updates OG fuel types, but not OTH fuel types
    </td>
    <td>Manually assigns an energy source code to generation with OTH fuel type
    </td>
    <td>Improves coverage of emissions data for these plants (there is no emission factor for OTH fuel, so these emissions would otherwise be zero)
    </td>
   </tr>
-  <tr>
-   <td>Grid Gross Loss
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
+  <
 </table>

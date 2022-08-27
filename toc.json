@@ -159,13 +159,8 @@
     },
     {
       "type": "item",
-      "title": "Validation Checks",
-      "uri": "/docs/Data Validation/Validation Checks.md"
-    },
-    {
-      "type": "item",
-      "title": "Validation Using eGRID",
-      "uri": "/docs/Data Validation/Validation using eGRID.md"
+      "title": "Comparing Data to eGRID",
+      "uri": "/docs/Data Validation/Comparing Data to eGRID.md"
     }
   ]
 }

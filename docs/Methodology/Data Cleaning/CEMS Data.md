@@ -44,6 +44,9 @@ Because our [methodology for calculating CHP-adjusted emissions](../Emissions%20
 ## Validation Checks
 
 While cleaning the CEMS data, we run several validation checks to ensure that the cleaned data does not contain any unexpected or anomalous values. These checks include:
- - Check that there are no missing energy source codes associated with records with non-zero fuel consumption.
+ - Check that there are no missing energy source codes associated with records with non-zero fuel consumption (which would result in missing emissions data).
  - Check that there are no negative fuel consumption or emissions values
  - Check that all records have been assigned a `subplant_id`
+ - Check that adjusted emissions values are less than or equal to total emissions values
+ - Check that there are no duplicate timestamps for each subplant
+
