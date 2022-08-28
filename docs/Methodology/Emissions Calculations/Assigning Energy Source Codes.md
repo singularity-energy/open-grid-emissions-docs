@@ -15,7 +15,7 @@ Sometimes the `energy_source_code` reported for a specific data point is "Other"
 
 All of the manual fuel type updates that we make can be found in [this table](https://github.com/singularity-energy/open-grid-emissions/blob/main/data/manual/updated_oth_energy_source_codes.csv). We manually identified these updated codes by examining the heat content of the OTH fuel reported for each plant in the IEA-923 GF table and comparing it to the range of heat content of other named fuels. In certain cases, the plant name also provided some clues (e.g. if the generator was located at an oil refinery, or a paper mill, or a phosphate plant).
 
-![box plot of fuel heat content](fuel_heat_content.png)
+![box plot of fuel heat content](../../../assets/images/fuel_heat_content.png)
 
 ## Energy Source Code for Municipal Solid Waste
 
