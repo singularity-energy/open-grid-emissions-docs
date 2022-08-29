@@ -20,7 +20,7 @@ All geothermal power plants are assumed to have no CH4 or N2O emissions.
 ## Calculating CO2-equivalent emissions
 Although CO2, CH4, and N2O are all GHGs, they each contribute to global warming differently, as described by its Global Warming Potential (GWP). These GWPs can be used to calculate a CO2-equivalent (CO2e) value. This formula is:
 
-$$ Mass_{CO2e} = (Mass_{co2} * GWP_{co2}) + (Mass_{ch4} * GWP_{ch4}) + (Mass_{n2o} * GWP_{n2o}) $$
+Mass<sub>CO2e</sub> = (Mass<sub>co2</sub> * GWP<sub>co2</sub>) + (Mass<sub>ch4</sub> * GWP<sub>ch4</sub>) + (Mass<sub>n2o</sub> * GWP<sub>n2o</sub>)
 
 
 The Intergovernmental Panel on Climate Change (IPCC) regularly updates these values over time in published Assessment Reports (AR). The values change over time both due to improvements in our scientific understanding of global warming, and because as the atmospheric concentration of GHGs changes over time, the GWP of each gas also changes. Thus, for each year, we use the most recently-published GWP values that were available in the data year. For example, AR5 was published in 2014, and AR6 was published in 2021. Thus, emissions occuring in years 2014-2020 will be converted using the AR5 values, and emissions occuring in 2021 and later will use the AR6 values.
