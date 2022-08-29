@@ -33,7 +33,8 @@ Each of these data categories includes data at different temporal resolutions (h
 
 ## Uses and Users
 
-![use cases](use_cases.png)
+![use_cases.png](https://stoplight.io/api/v1/projects/cHJqOjE1MzAxNA/images/Ax2MofwLkJE)
+
 
 ## Data Dictionary
 
