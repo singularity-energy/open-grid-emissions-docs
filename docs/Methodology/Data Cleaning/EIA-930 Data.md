@@ -23,7 +23,8 @@ To identify lags in correlations, we perform lagged correlations between timeser
 
 While 930 data should be reported with end-of-hour timestamps ([https://www.eia.gov/survey/form/eia_930/instructions.pdf](https://www.eia.gov/survey/form/eia_930/instructions.pdf)), three BAs (CISO, PJM, and TEPC) instead report data with start-of-hour timestamps. One BA, SC, seems to report data in local time, instead of UTC, resulting in data that is 4 hours ahead during daylight savings hours and 5 hours ahead during the rest of the year (shown below).
 
-![plot of lagged data](sc_lag_example.png)
+![sc_lag_example.png](https://stoplight.io/api/v1/projects/cHJqOjE1MzAxNA/images/hai1utOhmF0)
+
 
 The EIA specifies that interchange should be positive when electricity is flowing out of a balancing authority and negative when electricity is flowing in. We found that PJM had inverted the signs of its interchange, an issue that was fixed on October 31, 2019, 4:00 UTC for all trading partners except OVEC, which continues to be inverted until at least the end of 2020. In addition, PJM appears to report erroneous timestamps for its interchange data, which is lagged by 3 hours during daylight savings time and 4 hours during the rest of the year. TEPC’s interchange data is lags by 7 hours.
 
