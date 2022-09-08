@@ -30,6 +30,13 @@ The data is organized into three categories based on the primary use case
 
 Each of these data categories includes data at different temporal resolutions (hourly, monthly, annual), and in different units (U.S. and Metric). U.S.-unit files uses lb for mass and MMBtu for fuel consumption, while the metric files use kg for mass and GJ for fuel consumption. 
 
+<!-- theme: info -->
+
+> #### Carbon accounting data in Hawaii and Alaska
+>
+> Our carbon accounting data does not include balancing authorities in Hawaii and Alaska, because those BAs do not report their electricity interchange to the EIA. Users interested in carbon accounting in these BAs should use the *power sector data* for their BA of interest.
+
+
 
 ## Uses and Users
 
