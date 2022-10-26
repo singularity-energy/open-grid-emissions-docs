@@ -70,3 +70,9 @@ Field Name | Type | Description | Source
  fuel_category_eia930 | string | named fuel category used by EIA-930 associated with the identified `plant_primary_fuel` | [Mapping table](https://github.com/singularity-energy/open-grid-emissions/blob/main/data/manual/energy_source_groups.csv)
  timezone | string | IANA timezone name for the local timezone where the plant is physically located | EIA-860
  shaped_plant_id | integer | A synthetic plant id code used when aggregating plants to the ba-fuel level. If blank, this plant is not aggregated | [See fleet shaping method](../Methodology/Assigning%20Hourly%20Profiles%20to%20Monthly%20Data/Shaping%20Using%20Fleet-Specific%20Profiles.md)
+
+### Plant Metadata Table
+
+This table sumarizes the methods used to assign hourly profiles to each subplant in the OGE dataset, including the aggregated "synthetic plants" representing all non-CEMS-reporting generation in each BA. 
+
+Subplants which are aggregated to a synthetic plant are also listed in the plant metadata file, although their row will not include methodology details. Instead, the  row will indicate the synthetic plant that the subplant in question was aggregated into.
