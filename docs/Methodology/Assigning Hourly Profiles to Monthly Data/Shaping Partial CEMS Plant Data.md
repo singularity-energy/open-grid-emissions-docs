@@ -6,7 +6,8 @@ stoplight-id: partial_cems_plant
 
 In certain cases, there is hourly CEMS data reported for some, but not all subplants at a single plant. In this case, we use the combined hourly profile of the subplants that do report to CEMS to shape the monthly data for the subplants that do not report any data to CEMS. This approach assumes that the hourly operational of all subplants at a single plant will be similar, although further research is needed to establish the accuracy of this assumption.
 
-We use this approach only for shaping fossil fuel subplants. Two example where this is relevant are: 
+We exclude any non-combustion plants (hydro, wind, solar, nuclear, geothermal) from this method. This prevents the following cases: 
+
 1) Cases where a backup fossil generator reports to CEMS at a plant whose other subplants are renewable
 2) Cases where a fossil-fuel plant has a single rooftop solar array installed resulting in one solar subplant
 
