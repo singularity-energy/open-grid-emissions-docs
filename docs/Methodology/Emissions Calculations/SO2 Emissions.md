@@ -25,3 +25,9 @@ According to the EPA's eGRID documentation, certain types of geothermal plants c
 > While CO2 is a gas in the geothermal reservoir, SO2 and NOx result from hydrogen sulfide combustion. 
 
 These factors are loaded separately from our [manual geothermal emissions factor table](https://github.com/singularity-energy/open-grid-emissions/blob/main/data/manual/geothermal_emission_factors.csv). These factors are added before calculating uncontrolled SO2 emissions.
+
+## Future Work, Known Issues, and Open Questions
+- Issues with SO2 emission factors for coal plants with fluidized bed boilers ([details](https://github.com/singularity-energy/open-grid-emissions/issues/248))
+- Issues with SO2 emission factors for landfill gas generators ([details](https://github.com/singularity-energy/open-grid-emissions/issues/218))
+- Missing SO2 emissions in CEMS are not currently being imputed ([details](https://github.com/singularity-energy/open-grid-emissions/issues/153))
+- Need to determine standard fallback behavior when boiler design unknown ([details](https://github.com/singularity-energy/open-grid-emissions/issues/150))
