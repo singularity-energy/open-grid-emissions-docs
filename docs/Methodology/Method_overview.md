@@ -9,7 +9,7 @@ stoplight-id: pipeline_overview
 3. **Clean EIA-923 data**: Clean and allocate monthly generation and fuel data from EIA-923 ([methodology](../Methodology/Data%20Cleaning/EIA-923%20Data.md))
     1. Allocate monthly net generation and fuel consumption data reported at the prime-mover level in the EIA-923 generation and fuel table to individual generators. Data is allocated to each generator-month in proportion to data in the generator table and boiler fuel table, if reported, otherwise it is allocated in proportion to the nameplate capacity of each generator.
     2. Assign an energy source code to any “other” fuel consumed based on the heat content of the “other” fuel and likely fuels based on the plant type ([methodology](../Methodology/Emissions%20Calculations/Assigning%20Energy%20Source%20Codes.md))
-    3. Identify an annual primary fuel for each generator and plant based on fuels consumed. ([methodology](../Methodology/Data%20Aggregation/Plant%20Primary%20Fuel.md))
+    3. Identify an annual primary fuel for each generator, subplant, and plant based on fuels consumed. ([methodology](../Methodology/Data%20Aggregation/Plant%20Primary%20Fuel.md))
     4. Calculate monthly CO2, CH4, and N2O emissions for each generator based on its fuel consumption of each fuel type ([methodology](../Methodology/Emissions%20Calculations/GHG%20Emissions.md))
     5. Calculate monthly NOx ([methodology](../Methodology/Emissions%20Calculations/NOx%20Emissions.md)) and SO2 ([methodology](../Methodology/Emissions%20Calculations/SO2%20Emissions.md)) emissions from each generator based on its fuel consumption of each fuel type, as well as the boiler firing type and any emissions controls
     6. Calculate biomass-adjusted emissions ([methodology](../Methodology/Emissions%20Calculations/Adjusting%20Emissions%20for%20Biomass.md)), CHP-adjusted emissions ([methodology](../Methodology/Emissions%20Calculations/Adjusting%20Emissions%20for%20CHP.md)), and biomass- and CHP-adjusted emissions
@@ -21,7 +21,7 @@ stoplight-id: pipeline_overview
     2. Remove data for non grid-connected plants, plants in Puerto Rico, and certain units that only report steam load and do not report to EIA
     3. Assign a monthly "report_date" to each hourly observation based on the date of the local timestamp (this allows us to match the data to EIA-923 monthly report dates)
     4. Remove data for any unit-months where there is incomplete hourly data.
-    5. Assign a fuel type to each unit based on the power sector data crosswalk
+    5. Assign a fuel type to each unit based on the subplant primary fuel
     6. Fill in missing hourly emissions data using the assigned fuel type and reported hourly fuel consumption data
     7. Remove all observations for each unit-month when no operation is reported for that unit in that month (allows us to fill this data using EIA-923 data if available).
     8. Calculate biomass-adjusted emissions
@@ -44,7 +44,8 @@ stoplight-id: pipeline_overview
     1. For BAs where wind and solar data is missing, impute profiles based on the wind and solar profiles in neighboring BAs that are in the same time zone. For all other BA-fuels that are missing, assume a flat profile
     2. Calculate the total net generation for each BA-fuel reported in CEMS
     3. Calculate a residual net generation profile by subtracting CEMS net generation from EIA-930 net generation for each BA fuel. This should theoretically represent the hourly net generation profile of all generators that do not report to CEMS.
-14. **Shape monthly EIA-923 data**: Assign the best available hourly profile for each BA-fuel to the monthly EIA-923 data ([methodology](../Methodology/Assigning%20Hourly%20Profiles%20to%20Monthly%20Data/Shaping%20Using%20Fleet-Specific%20Profiles.md))
-15. **Combine hourly plant-level data** from all sources (CEMS, partial CEMS, and shaped EIA-923) and export hourly plant-level results (currently, shaped EIA-923 data is aggregated to the BA-fuel level instead of individual plants to prevent false precision and keep data size reasonable)
-16. **Export power sector (BA-fuel level) data**
-17. **Calculate and export consumed emission factors** based on hourly interchange between BAs reported in EIA-930 ([methodology](../Methodology/Emissions%20Calculations/Consumption-based%20Emissions.md))
+14. **Export hourly data for individual plants**: using the same methodology described in step 15, impute the hourly profile for each individual plant and export the results. We perform this shaping one BA at a time to conserve memory on the computer. 
+15. **Shape monthly EIA-923 data**: Assign the best available hourly profile for each BA-fuel to the monthly EIA-923 data, this time aggregated to the fleet level ([methodology](../Methodology/Assigning%20Hourly%20Profiles%20to%20Monthly%20Data/Shaping%20Using%20Fleet-Specific%20Profiles.md))
+16. **Combine hourly plant-level data** from all sources (CEMS, partial CEMS, and shaped EIA-923) and export hourly plant-level results (currently, shaped EIA-923 data is aggregated to the BA-fuel level instead of individual plants to prevent false precision and keep data size reasonable)
+17. **Export power sector (BA-fuel level) data**
+18. **Calculate and export consumed emission factors** based on hourly interchange between BAs reported in EIA-930 ([methodology](../Methodology/Emissions%20Calculations/Consumption-based%20Emissions.md))

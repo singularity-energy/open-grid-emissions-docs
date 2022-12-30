@@ -135,3 +135,11 @@ The second filter removes factors that would lead to net generation values that 
 The third filter removes any ratios that are negative, since multiplying a negative ratio by gross generation would invert the shape of the hourly gross generation data. 
 
 After these three filters have been applied for individual factors for each subplant-month, the pipeline removes all factors of a certain type for an entire plant if there are any missing factors for any subplant-month. For example, if a subplant ratio for a single month at a single subplant is filtered out, all subplant ratios for all other months and subplants at the same plant will also be removed.
+
+## Future Work, Known Issues, and Open Questions
+- Plant-specific data quality issues causing incorrect conversions for 2 plants ([details](https://github.com/singularity-energy/open-grid-emissions/issues/269))
+- Need to update default gross to net generation factors ([details](https://github.com/singularity-energy/open-grid-emissions/issues/177))
+- Gross to net conversions may not be correct for annual EIA-923 reporters ([details](https://github.com/singularity-energy/open-grid-emissions/issues/170))
+- Improve gross to net filtering using data from EIA-860 ([details](https://github.com/singularity-energy/open-grid-emissions/issues/168))
+- Consider implementing a regression-based method for GTN conversion ([details](https://github.com/singularity-energy/open-grid-emissions/issues/64))
+- Gross to net conversions during plant startup may be incorrect ([details](https://github.com/singularity-energy/open-grid-emissions/issues/155))

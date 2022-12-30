@@ -6,9 +6,10 @@ There are 41 unique `energy_source_code` for specific fuels that may be consumed
 
 ## Assigning energy source codes to CEMS data
 Although CEMS reports the total amount of fuel consumed in each hour, it does not include information about the type of fuel being consumed in each hour. Energy source codes are assigned to each unit in a three step process:
-1. Use the energy source code assigned to the unit in the EPA's Power Sector Data Crosswalk
+1. Use the month-specific subplant primary fuel identified by [this method](../Data%20Aggregation/Plant%20Primary%20Fuel.md).
 2. If the entire plant only consumed a single fuel in a month (according to the EIA-923 GF table) use that fuel type
-3. Otherwise use the `plant_primary_fuel` determined by [this method](../Data%20Aggregation/Plant%20Primary%20Fuel.md).
+3. Use the energy source code assigned to the unit in the EPA's Power Sector Data Crosswalk. Although this data is unit-specific, it is static and several years out of date.
+
 
 ## Updating "Other" (OTH) Energy Source Codes
 Sometimes the `energy_source_code` reported for a specific data point is "Other" (OTH). A fuel type of other may be reported when the fuel consumed does not exactly fit with one of the 40 other fuel types used by the EIA. Other fuel codes are problematic because there are no emissions factors associated with them, so emissions associated with other fuel consumption will be other. Thus, the data pipeline manually updates all "other" fuel types with specific named fuel types.

@@ -6,13 +6,13 @@ stoplight-id: using_the_data
 
 ## Data Availability
 
-The latest release includes data for year 2019-2020 covering the contiguous United States, Alaska, and Hawaii. In future releases, we plan to expand the geographic coverage to additional U.S. territories (track progress [here](https://github.com/singularity-energy/open-grid-emissions/issues/79)), and to expand the historical coverage of the data.
+The latest release includes data for year 2019-2021 covering the contiguous United States, Alaska, and Hawaii. In future releases, we plan to expand the geographic coverage to additional U.S. territories (track progress [here](https://github.com/singularity-energy/open-grid-emissions/issues/79)), and to expand the historical coverage of the data.
 
-This initial release only includes 2019 and 2020 data because as of August 2022, 2020 is the most recent year of complete input data available, and 2019 is the earliest complete year for which EIA-930 data is available (which is used to assign an hourly profile to non-CEMS data). You can track progress on integrating pre-2019 data [here](https://github.com/singularity-energy/open-grid-emissions/issues/117)
+The earliest data included is 2019 because 2019 is the earliest complete year for which EIA-930 data is available (which is used to assign an hourly profile to non-CEMS data). You can track progress on integrating pre-2019 data [here](https://github.com/singularity-energy/open-grid-emissions/issues/117)
 
 ## Data Release Schedule
 
-Parts of the input data used for the Open Grid Emissions dataset is released by the U.S. Energy Information Administration in the Autumn following the end of each year (2021 data should be available Autumn 2022). Each release will include the most recent year of available data as well as updates of all previous available years based on any updates to the OGEI methodology. All previous versions of the data will be archived on Zenodo.
+Parts of the input data used for the Open Grid Emissions dataset is released by the U.S. Energy Information Administration in the Autumn following the end of each year (2022 data should be available Autumn 2023). Each release will include the most recent year of available data as well as updates of all previous available years based on any updates to OGE methodology. All previous versions of the data will be archived on Zenodo.
 
 ## Files
 

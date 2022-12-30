@@ -2,7 +2,9 @@
 stoplight-id: primary_fuel
 ---
 
-## Assigning Plant Primary Fuel
+## Assigning Primary Fuels
+
+Throughout the data pipeline, it is important to be able to assign a fuel category to each plant (e.g. is this a coal plant? a natural gas plant?). However, some plants consume multiple fuels at the same time, or switch fuels throughout the year, so we assign a "primary" fuel value for categorization. We do this not only for each plant, but for each subplant and each generator as well.
 
 The primary fuel of a plant is assigned based on the `energy_source_code` that has the highest annual volume of `fuel_consumed_mmbtu`, as reported in the EIA-923 generation and fuel table. 
 

@@ -63,20 +63,16 @@ Our understanding is that the BA reported in EIA-860 represents the plant’s co
 
 **Fuel code assignment**
 
-The primary fuel codes assigned to each plant in the OGEI pipeline may not match the generator primary fuel code used by the balancing authority. Thus, it is possible that the set of plants classified as “natural gas”, for example, in EIA-930 may be different from the set of plants that we classify as natural gas.
+The primary fuel codes assigned to each plant in OGE pipeline may not match the generator primary fuel code used by the balancing authority. Thus, it is possible that the set of plants classified as “natural gas”, for example, in EIA-930 may be different from the set of plants that we classify as natural gas.
 
 **Inclusion of distribution-connected plants**
 
 Our understanding is that the data published in EIA-930 only reflects plants have metered telemetry that communicates with the grid operator. In many cases, this may exclude plants that are connected to distribution grids, rather than directly interconnected at the transmission level. Thus, it is possible that the set of plants reported in EIA-930 may not reflect the full set of plants that report to EIA-923 (which includes plants that are connected to distribution grids as well). 
 
 ## Shaping the Monthly data
-Once an hourly profile for each fleet-month has been calculated, it is converted to a percentage of the monthly total value. These percentages are then multiplied by each monthly total value to get the hourly profile for each fleet. This approach ensures that the shaped hourly values, when aggregated back to the monthly level, will equal the total reported monthly value that was shaped.
+Once an hourly profile for each fleet-month has been calculated, it is converted to a percentage of the monthly total value. These percentages are then multiplied by each monthly total value to get the hourly profile for each plant. This approach ensures that the shaped hourly values, when aggregated back to the monthly level, will equal the total reported monthly value that was shaped.
 
-Currently, we only report hourly data for these EIA-only plants at the fleet level, rather than the individual plant level. We do this for several reasons:
-1. Although the hourly CEMS data represents approximately 90% of all electricity-related emissions, the EIA data that is being shaped accounts for approximately 80% of all subplant operating hours in the dataset, meaning that there is a large amount of small plants that need to be shaped. Thus, creating an hourly value for each of these plants would result in a huge dataset that many computers do not have the ability to store in their memory (RAM). Thus, shaping fleet-level data helps keep the size of this dataset managable.
-2. Because the method used to shape the data relies on fleet-level observations (rather than plant-specific imputation), we feel that providing a plant-level hourly value may create a sense of false precision in the end result. 
-
-Because aggregating the plant-level data to the fleet level removes the `plant_id_eia` identifier, we create a synthetic `shaped_plant_id` to represent these aggregated plants. These synthetic ids are 6-digit identifiers that follow the format `9BBBFF` where `BBB` is the three-digit ba number identified in [this table](https://github.com/singularity-energy/open-grid-emissions/blob/main/data/manual/ba_reference.csv), and `FF` represents a two-digit number unique to each fuel category, and defined [here](https://github.com/singularity-energy/open-grid-emissions/blob/afb3ddec0dc93003c21f655b90300c17344107f8/src/impute_hourly_profiles.py#L11). A mapping of `plant_id_eia` to `shaped_plant_id` for each plant can be found in the `plant_static_attributes` table that is included in the dataset.
+Although we shape data for each individual plant, the hourly profile for every plant in a fleet will be identical. These shapes represent the best available estimate of hourly generation, but hourly data for these specific plants should be treated with caution. For example, one limitation of the shaped data is that it assumes a constant heat rate, so this shaped data should not be used for analyzing the hourly heat rate of these plants.
 
 ## Future Work, Known Issues, and Open Questions
 - Infer missing hourly profiles for hydro generation ([details](https://github.com/singularity-energy/open-grid-emissions/issues/37)

@@ -3,17 +3,16 @@ stoplight-id: cleaning_cems
 ---
 
 ## Loading data from PUDL
-All of the CEMS data used by the OGEI is loaded from pre-cleaned versions of these files created by the PUDL project. The PUDL transformation process cleans the input data so that it is adjusted for uniformity, corrected for errors, and ready for bulk programmatic use.
+All of the CEMS data used by OGE is loaded from pre-cleaned versions of these files created by the PUDL project. The PUDL transformation process cleans the input data so that it is adjusted for uniformity, corrected for errors, and ready for bulk programmatic use.
 
 A comprehensive list of transformations made by by pudl can be found [here](https://catalystcoop-pudl.readthedocs.io/en/latest/data_sources/epacems.html#pudl-data-transformations) , but the most notable data cleaning that pudl performs is: 
  - converts all datetimes to UTC
  - Corrects anomalous `gross_load_mw` values (if a gross load value is greater than 2,000 MW, they assume that they have accidentally reported kWh, so the gross load value is divided by 1,000). 
- - fills missing `gross_load_mw` and `heat_content_mmbtu` values with zero (NOTE: This step causes issues with later data cleaning steps by making it difficult to differentiate between missing values and measured zeros. We are working with the Catalyst team to fix this. Track progress [here](https://github.com/catalyst-cooperative/pudl/issues/604))
+ - Crosswalks the `plant_id_epa` to `plant_id_eia`. For some plants, the EPA uses different plant codes from the ones used by the EIA. In order to accurately match plant data between CEMS and the EIA datasets, the EPA's [Power Sector Data Crosswalk](https://www.epa.gov/airmarkets/power-sector-data-crosswalk) is used.
+- Remove leading zeros from the `unitid` column to enable matching with other tables.
 
 After loading the transformed cems data into the pipeline, we perform several other data cleaning steps:
 - Convert `co2_mass_tons` to `co2_mass_lb` so that all emissions mass units are standardized.
-- Convert the `plant_id_epa` to `plant_id_eia`. For some plants, the EPA uses different plant codes from the ones used by the EIA. In order to accurately match plant data between CEMS and the EIA datasets, we use the EPA's [Power Sector Data Crosswalk](https://www.epa.gov/airmarkets/power-sector-data-crosswalk) to convert these IDs.
-- Remove leading zeros from the `unitid` column to enable matching with other tables.
 
 ## Data removed from the CEMS data
 
@@ -31,7 +30,11 @@ In addition to actual missing values, CO2 data is considered to be missing if re
 
 Before imputing the missing data, we must assign an `energy_source_code` to each observation so that the appropriate emission factor can be used. See "[Assigning energy source codes](../Emissions%20Calculations/Assigning%20Energy%20Source%20Codes.md)" for a description of this methodology.
 
-When imputing missing CO2 data, if a unit has a unit-specific fuel type identified by the EPA-EIA crosswalk, we calculate co2 using a fuel-specific emission factor. If not (often in the cases when a unit burns multiple fuels), we fill missing data by using a plant-month weighted average emission factor of all fuels burned in that plant-month.
+When imputing missing CO2 data, we follow a four-step process:
+1. If a unit has non-missing emissions data for other hours in the same month, calculate a unit-month specific EF from the CEMS-reported fuel consumption and emissions
+2. For all remaining missing values, use a subplant and month-specific average emission factor weighted by the fuel consumption reported in EIA-923
+3. For any remaining missing values, calculate emissions based on the subplant primary fuel and fuel consumption
+4. For any remaining missing values, calculate emissions based on the fuel type assigned in the power sector data crosswalk and fuel consumption.
 
 Hourly CH4 and N2O emissions are then calculated based on hourly fuel consumption and fuel type (see [here](../Emissions%20Calculations/GHG%20Emissions.md) for more details)
 
