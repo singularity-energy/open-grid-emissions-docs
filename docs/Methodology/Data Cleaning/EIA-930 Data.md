@@ -26,7 +26,7 @@ While 930 data should be reported with end-of-hour timestamps ([https://www.eia.
 ![sc_lag_example.png](https://stoplight.io/api/v1/projects/cHJqOjE1MzAxNA/images/hai1utOhmF0)
 
 
-The EIA specifies that interchange should be positive when electricity is flowing out of a balancing authority and negative when electricity is flowing in. We found that PJM had inverted the signs of its interchange, an issue that was fixed on October 31, 2019, 4:00 UTC for all trading partners except OVEC, which continues to be inverted until at least the end of 2020. In addition, PJM appears to report erroneous timestamps for its interchange data, which is lagged by 3 hours during daylight savings time and 4 hours during the rest of the year. TEPC’s interchange data is lags by 7 hours.
+The EIA specifies that interchange should be positive when electricity is flowing out of a balancing authority and negative when electricity is flowing in. We found that PJM had inverted the signs of its interchange, an issue that was fixed on October 31, 2019, 4:00 UTC for all trading partners. In addition, PJM appears to report erroneous timestamps for its interchange data, which is lagged by 3 hours during daylight savings time and 4 hours during the rest of the year. TEPC’s interchange data is lags by 7 hours.
 
 To ensure that we were not performing corrections based on spurious correlations, we corrected issues only when they were consistent across years (2019 and 2020) and between DST and non-DST times (April-October and December-February). In cases where a data reporting issue was fixed at a specific date, for example, the sign change in PJM interchange data, we manually inspected the data to confirm that the issue was not spurious even though it changed across years. In cases where a timestamp issue was DST-related, we ensured that the lags identified by correlation in DST and non-DST windows was one hour different, consistent with the balancing authority erroneously reporting data with a DST shift.
 
@@ -46,8 +46,7 @@ We have reported these timestamp issues with the EIA, which works with BAs on re
     * TEPC: + 7 hours
     * CFE has zero interchange, so the correlation looks strange/misleading
 * Flipped interchange sign (x -1)
-    * PJM-{CPLE, CPLW, DUK, LGEE, MISO, NYIS, TVA} before Oct 31, 2019, 4:00 UTC (this is all interchange partners except OVEC)
-    * PJM-OVEC, all time. Based on OVEC demand - generation, OVEC should be a net exporter to PJM
+    * PJM-{CPLE, CPLW, DUK, LGEE, MISO, NYIS, TVA} before Oct 31, 2019, 4:00 UTC (i.e., all trading partners)
 * Other interchange issues
     * AZPS-SEC interchange before June 1, 2020 does not agree with SEC-AZPS. We assume the SEC-AZPS interchange is correct, and use its inverse for AZPS-SEC prior to 7/1/2020, 3:00 UTC
 * Adjustments to all timestamps (after the above adjustments)
