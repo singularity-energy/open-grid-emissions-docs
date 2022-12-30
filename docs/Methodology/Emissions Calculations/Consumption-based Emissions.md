@@ -22,6 +22,13 @@ In practice, consumed emissions are generally dirtier than generated emissions i
 
 The MRIO model produces regional averages of consumed emissions, but for large BAs such as CISO, it may not capture the actual emissions used by each customer. The MRIO model assumes that all electricity consumed within a BA is a the same, while in reality, transmission constraints, losses, and spatial heterogeneity of fuel sources can make for variation in consumed emission rates even within a BA. However, calculating these more granular consumed rates requires detailed data on the transmission infrastructure and operational constraints of a BA, which is not publicly available. 
 
+### Calculation failures in the MRIO model 
+
+In some cases, the MRIO model is unsolvable. We take a few approaches: 
+
+* In some cases, MRIO is unsolvable because a region with zero generation (according to OGE power sector data) is exporting energy according to EIA-930 after physics-based cleaning. In most cases, the EIA-930-reported exports from these regions are very small (<1 MW), and we set them to zero
+* In rare cases, the system of linear equations describing the MRIO model has no solution. In these cases, we linearly interpolate gaps up to 2 hours
+
 ### Assumptions about international trading partners
 
 Some U.S. balancing authorities have electricity interchange with non-US ISOs, including AESO, BCHA, CEN, CFE, HQT, IESO, MHEB, NBSO, and SPC. EIA-930 data contains interchange from these BAs reported by their U.S. trading partners, but none of our datasets include emissions or generation data for these BAs. In some cases, for example, IESO, generation by fuel type is available from the ISO itself; however, processing these individual data souces is beyond the scope of this data release. Instead, we make the same simplified assumptions about generation from these regions as those used in Chalendar (2021). Specifically, we assume that 100% of electricity imported from BCHA, HQT, or MHEB is hydroelectric, and that all other BAs import the same mix as the U.S. average. This likely overestimates imported emissions in some cases, including, for example, IESO, which actually generates more than 90% of its electricity from a mix of nuclear and hydroelectricity. 
