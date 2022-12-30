@@ -48,6 +48,8 @@ We have reported these timestamp issues with the EIA, which works with BAs on re
 * Flipped interchange sign (x -1)
     * PJM-{CPLE, CPLW, DUK, LGEE, MISO, NYIS, TVA} before Oct 31, 2019, 4:00 UTC (this is all interchange partners except OVEC)
     * PJM-OVEC, all time. Based on OVEC demand - generation, OVEC should be a net exporter to PJM
+* Other interchange issues
+    * AZPS-SEC interchange before June 1, 2020 does not agree with SEC-AZPS. We assume the SEC-AZPS interchange is correct, and use its inverse for AZPS-SEC prior to 7/1/2020, 3:00 UTC
 * Adjustments to all timestamps (after the above adjustments)
         * - 1 hour to move from end-of-hour to start-of-hour
 

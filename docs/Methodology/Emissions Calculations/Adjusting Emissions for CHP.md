@@ -10,22 +10,22 @@ The formula and assumptions used for calculating the electric allocation factor 
 ### Calculating useful thermal output
 In form EIA-923, generators report both the total quantity of each fuel consumed, and the quantity consumed for electric generation. By subtracting these two values, we can calculate the total fuel consumed for heating purposes:
 
-$$ fuel\_consumed\_for\_heating\_mmbtu = fuel\_consumed\_mmbtu - fuel\_consumed\_for\_electricity\_mmbtu $$
+`fuel_consumed_for_heating_mmbtu = fuel_consumed_mmbtu - fuel_consumed_for_electricity_mmbtu`
 
 To calculate the gross thermal output, we use an assumed efficiency factor of 80%:
 
-$$ gross\_thermal\_output\_for\_heating\_mmbtu = 0.8 * fuel\_consumed\_for\_heating\_mmbtu $$
+`gross_thermal_output_for_heating_mmbtu = 0.8 * fuel_consumed_for_heating_mmbtu`
 
 However, not all gross thermal output can be captured for useful purposes such as space heating or industrial processes. Thus, the gross thermal output is further adjusted using an assumed efficiency factor of 75%:
 
-$$ useful\_thermal\_output\_mmbtu = 0.75 *gross\_thermal\_output\_for\_heating\_mmbtu $$
+`useful_thermal_output_mmbtu = 0.75 *gross_thermal_output_for_heating_mmbtu`
 
 This assumed efficiency factor assumes that the CHP units generate electricity first and use the waste heat for other purposes, also known as “topping.” While there are some units that generate and use heat first and then use the waste heat to generate electricity, also known as “bottoming, data from the EIA shows that over 90% of CHP facilities are topping facilities (track progress on updating these assumptions [here](https://github.com/singularity-energy/open-grid-emissions/issues/23)).
 
 ### Calculating the electric allocation factor
 The electric allocation factor is the ratio of the electricity output to the sum of the combined electricity and thermal outputs. Because electricity net generation is in units of MWh, it must be converted to mmbtu using a conversion factor of 3.412142 mmbtu per mwh. 
 
-$$ Electric\_Allocation\_Factor =  \frac{(3.412142 * net\_generation\_mwh)}{(useful\_thermal\_output\_mmbtu + (3.412142 * net\_generation\_mwh))} $$ 
+`Electric_Allocation_Factor =  (3.412142 * net_generation_mwh) / (useful_thermal_output_mmbtu + (3.412142 * net_generation_mwh))`
 
 An electric allocation factor is calculated and applied to all generators, regardless of reported CHP status. In the case that total fuel consumed equals total fuel consumed for electricity, the useful thermal output will be zero, and thus the electric allocation factor will be 100%. 
 
