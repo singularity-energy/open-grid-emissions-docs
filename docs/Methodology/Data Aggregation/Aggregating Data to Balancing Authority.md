@@ -6,7 +6,7 @@ stoplight-id: ba_aggregation
 
 In addition to plant-level data, OGEI includes data aggregated to the balancing authority level.
 
-As explained in the [eGRID technical support documentation](https://www.epa.gov/system/files/documents/2022-01/egrid2020_technical_guide.pdf):
+As explained in the [eGRID technical support documentation](https://www.epa.gov/system/files/documents/2023-01/eGRID2021_technical_guide.pdf):
 
 
 > A balancing authority is a portion of an integrated power grid for which a single dispatcher has operational control of all electric generators. A balancing authority is the responsible entity that integrates resource plans ahead of time, maintains demand and resource balance within a BA area, and supports interconnection frequency in real time. The balancing authority dispatches generators in order to meet an area’s needs and can also control load to maintain the load-generation balance.

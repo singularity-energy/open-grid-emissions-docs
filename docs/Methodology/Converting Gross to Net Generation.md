@@ -57,9 +57,9 @@ The conversion factors are applied in the following hierarchical order:
 3. Subplant shift factor
 4. Plant shift factor
 5. Fuel-specific ratio
-6. Set net generation equal to net generation
+6. Default gross-to-net ratios from the EIA
 
-If no plant-specific factors are available (methods 1-4), the pipeline uses a fuel-specific ratio that represents the average gross-to-net ratio for all plants (nationally) that consume the same primary fuel. If even a fuel-specific factor is not available, the pipeline sets net generation equal to gross generation. 
+If no plant-specific factors are available (methods 1-4), the pipeline uses a fuel-specific ratio that represents the average gross-to-net ratio for all plants (nationally) that consume the same primary fuel. If even a fuel-specific factor is not available, the pipeline uses prime mover-specific default gross to net ratios from the EIA (see the table on page 16 of the EIA's [Electric Power Monthly Technical Notes](https://www.eia.gov/electricity/monthly/pdf/technotes.pdf))
 
 The following table shows what percent of gross generation reported in CEMS was converted to net generation using each method.
 
@@ -72,53 +72,67 @@ The following table shows what percent of gross generation reported in CEMS was 
    </td>
    <td>2020
    </td>
+   <td>2021
+   </td>
   </tr>
   <tr>
    <td>1. Subplant ratio
    </td>
-   <td>91.46%
+   <td>86.96%
    </td>
-   <td>97.49%
+   <td>86.74%
+   </td>
+   <td>87.43%
    </td>
   </tr>
   <tr>
    <td>2. Plant ratio
    </td>
-   <td>8.12%
+   <td>9.44%
    </td>
-   <td>1.92%
+   <td>9.03%
+   </td>
+   <td>8.93%
    </td>
   </tr>
   <tr>
    <td>3. Subplant shift factor
    </td>
-   <td>0.15%
+   <td>2.68%
    </td>
-   <td>0.27%
+   <td>3.00%
+   </td>
+   <td>2.58%
    </td>
   </tr>
   <tr>
    <td>4. Plant shift factor
    </td>
-   <td>0.04%
-   </td>
    <td>0.00%
+   </td>
+   <td>0.13%
+   </td>
+   <td>0.07%
    </td>
   </tr>
   <tr>
    <td>5. Fuel-specific ratio
    </td>
-   <td>0.14%
+   <td>0.00%
    </td>
-   <td>0.16%
+   <td>0.67%
+   </td>
+   <td>0.56%
    </td>
   </tr>
   <tr>
-   <td>6. Net = Gross
+   <td>6. Default EIA ratios
    </td>
-   <td>0.08%
+   <td>0.92%
    </td>
-   <td>0.17%
+   <td>0.42%
+   </td>
+   <td>0.41%
    </td>
   </tr>
 </table>
@@ -132,7 +146,7 @@ The first filter removes factors that would lead to net generation values that s
 
 The second filter removes factors that would lead to net generation values that are large negative numbers. Based on reported EIA-923 net generation data for 2020, the largest negative generation for a single generator in a month is about -19,000 MWh, which works out to about -25MW on average in each hour. Thus, we set our lower threshold value to -50MW, so that a factor is filtered out if the 2nd percentile of calculated hourly net generation values in a month is lower than -50MW. Negative 50MW is double the lowest average net generation value reported, and using the 2nd percentile instead of the minimum allows for a small number of hours to be anomalous. 
 
-The third filter removes any ratios that are negative, since multiplying a negative ratio by gross generation would invert the shape of the hourly gross generation data. 
+The third filter removes any ratios that are less than 0.75 or greater than 1.25. Due to discrepancies between reported gross generation in CEMS and reported net generation in EIA-923, it is possible that sometimes there are ratios that are very small, and would lead the CEMS gross generation to be scaled to a unrealistically small number.  This would lead to instances where a plant was using CEMS CO2 totals but EIA-923 net generation totals, resulting in the plant having abnormally high emission rates. When we use CEMS data, we want to make sure that the net generation values are reasonable given the reported gross generation. After analyzing three years (2019-2021) of annual gross to net ratios, both at the plant and subplant levels, it appears that generally the interquartile range of GTN ratios is between 0.75 and 1.00, with an upper bound around 1.25. Thus, we use 0.75 as the lower bound for filtering out ratios, and 1.25 as the upper bound. Filtering out ratios below 0.75 also removes negative ratios, which is important since negative ratios would invert the shape of the generation profile.
 
 After these three filters have been applied for individual factors for each subplant-month, the pipeline removes all factors of a certain type for an entire plant if there are any missing factors for any subplant-month. For example, if a subplant ratio for a single month at a single subplant is filtered out, all subplant ratios for all other months and subplants at the same plant will also be removed.
 
